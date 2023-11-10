@@ -1,0 +1,9 @@
+{% if board_list %}
+    <ul>
+    {% for i in board_list %}
+        <li><a href="/board/{{ i.id }}/">{{ i.subject }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>질문이 없습니다.</p>
+{% endif %}
