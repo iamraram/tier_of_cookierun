@@ -1,9 +1,36 @@
-{% if board_list %}
-    <ul>
-    {% for i in board_list %}
-        <li><a href="/board/{{ i.id }}/">{{ i.subject }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>질문이 없습니다.</p>
-{% endif %}
+{% load static %}
+<html>
+<head>
+  <title>쿠오븐 게시판</title>
+</head>
+<body>
+  <div class="nav">
+    <div class="nav_title"></div>
+    <div class="nav_block">
+      <div class="nav_block_content">쿠키 티어</div>
+      <div class="nav_block_content">게시판</div>
+      <div class="nav_block_content">내 정보</div>
+    </div>
+  </div>
+  <div class="top">
+      <h2 class="title">쿠오븐 공략 게시판</h2>
+      <h4 class="subtitle">쿠키런 오븐브레이크에 대한 팁을 남기고 소통할 수 있습니다.</h4>
+  </div>
+  <div class="bottom">
+    {% if board_list %}
+        {% for i in board_list %}
+            <a href="/board/{{ i.id }}/" class="bottom_block">
+              <div class="bottom_block_id">{{ i.id|stringformat:"03d" }}</div>
+              <div class="bottom_block_title">{{ i.subject }}</div>
+              <div class="bottom_block_view">조회수 {{ i.view }}</div>
+              <div class="bottom_block_date">{{ i.create_date|date:"Y-m-d H:i" }}</div>
+            </a>
+        {% endfor %}
+    {% endif %}
+  </div>
+  <div class="write">
+    
+  </div>
+  <link rel="stylesheet" type="text/css" href="{% static 'board.css' %}">
+</body>
+</html>
