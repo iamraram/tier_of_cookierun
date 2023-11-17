@@ -1,0 +1,22 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="{% static '/board.css' %}">
+  <title>쿠오븐 게시판</title>
+</head>
+<body>
+  <div class="nav">
+    <div class="nav_title"></div>
+    <div class="nav_block">
+      <div class="nav_block_content">쿠키 티어</div>
+      <a href="/board/"><div class="nav_block_content">게시판</div></a>
+      <div class="nav_block_content">내 정보</div>
+    </div>
+  </div>
+  {% block content %}
+  {% endblock %}
+</body>
+</html>

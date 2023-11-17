@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="form_parent">
+    <form method="POST" class="pst">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      <div class="body">
+        <input type="text" name="category" class="input small_input" placeholder="카테고리"/>
+        <input type="text" name="subject" class="input" placeholder="포스트의 제목을 입력하세요"/>
+      </div>
+      <div class="body">
+        <textarea name="description" class="input ta" placeholder="포스트의 내용을 입력하세요"></textarea>
+      </div>
+      <div class="center">
+        <button type="submit" class="submit">포스트 작성</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

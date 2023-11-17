@@ -1,4 +1,7 @@
-<h1>{{ board_detail.subject }}</h1>
-<div>
-    {{ board_detail.description }}
-</div>
+{% extends 'base.html' %}
+{% block content %}
+  <h1>{{ board_detail.subject }}</h1>
+  <div>
+      {{ board_detail.description }}
+  </div>
+{% endblock %}

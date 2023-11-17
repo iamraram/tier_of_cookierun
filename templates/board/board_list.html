@@ -1,17 +1,5 @@
-{% load static %}
-<html>
-<head>
-  <title>쿠오븐 게시판</title>
-</head>
-<body>
-  <div class="nav">
-    <div class="nav_title"></div>
-    <div class="nav_block">
-      <div class="nav_block_content">쿠키 티어</div>
-      <div class="nav_block_content">게시판</div>
-      <div class="nav_block_content">내 정보</div>
-    </div>
-  </div>
+{% extends 'base.html' %}
+{% block content %}
   <div class="top">
       <h2 class="title">쿠오븐 공략 게시판</h2>
       <h4 class="subtitle">쿠키런 오븐브레이크에 대한 팁을 남기고 소통할 수 있습니다.</h4>
@@ -28,9 +16,8 @@
         {% endfor %}
     {% endif %}
   </div>
-  <div class="write">
-    
-  </div>
-  <link rel="stylesheet" type="text/css" href="{% static 'board.css' %}">
-</body>
-</html>
+  <a href="/board/create">
+    <div class="write">
+    </div>
+  </a>
+{% endblock %}
