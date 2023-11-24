@@ -10,6 +10,9 @@ def index(request):
   context = {'board_list': board_list}
   return render(request, 'board/board_list.html', context)
 
+def board_zzap(request):
+  return render(request, 'board/board_zzap.html')
+
 def detail(request, question_id):
   board_detail = get_object_or_404(Board, pk=question_id)
   context = {'board_detail': board_detail}
@@ -26,6 +29,7 @@ def board_write(request):
       question = form.save(commit=False)
       question.create_date = timezone.now()
       question.comment = '[]'
+      question.writer = request.user.username
       question.view = 0
       question.save()
       return redirect('/board')

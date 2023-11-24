@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="login_parent">
+    {% if user.is_authenticated %}
+    <div class="bd">
+      {{ user.username }}님 안녕하세요!
+    </div>
+    <a href="/auth/logout/" class="submit">
+      로그아웃
+    </a>
+    {% else %}
+      <div class="login_title"></div>
+        <form method="post" class="pst_small" action='/auth/login/'>
+          {% csrf_token %}
+          <div class="body small_body">
+            <div class="txt">아이디</div>
+            <input type="text" name="username" class="input small_input2" value="{{ form.username.value|default_if_none:'' }}"/>
+          </div>
+          <div class="body small_body">
+            <div class="txt">비밀번호</div>
+            <input type="password" name="password" class="input small_input2" value="{{ form.password.value|default_if_none:'' }}"/>
+          </div>
+          <div class="body small_body ak">
+            <a href="/auth/signup" type="button" class="submit new_account">계정이 없어요</a>
+            <button type="submit" class="submit">로그인</button>
+          </div> <!-- Fix this line -->
+        </form>
+      </div>
+    {% endif %}
+{% endblock %}

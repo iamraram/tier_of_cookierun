@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="login_parent">
+    <div class="signup_title"></div>
+    <form method="post" class="pst_small" action='/auth/signup/'>
+      {% csrf_token %}
+      <div class="body small_body">
+        <div class="txt">아이디</div>
+        <input type="text" name="username" class="input small_input2" value="{{ form.username.value|default_if_none:'' }}"/>
+      </div>
+      <div class="body small_body">
+        <div class="txt">비밀번호</div>
+        <input type="password" name="password1" class="input small_input2" value="{{ form.password1.value|default_if_none:'' }}"/>
+      </div>
+      <div class="body small_body">
+        <div class="txt">비번 확인</div>
+        <input type="password" name="password2" class="input small_input2" value="{{ form.password2.value|default_if_none:'' }}"/>
+      </div>
+      <div class="body small_body ak">
+        <button type="submit" class="submit">계정 만들기</button>
+      </div> <!-- Fix this line -->
+    </form>
+  </div>
+{% endblock %}

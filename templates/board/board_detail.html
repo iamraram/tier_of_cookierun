@@ -1,7 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1>{{ board_detail.subject }}</h1>
-  <div>
+<div class="pr">
+  <div class="mt">{{ board_detail.subject }}</div>
+  <div class="cat">카테고리: {{ board_detail.category }}</div>
+  <div class="cat">작성자: {{ board_detail.writer }}</div>
+  {% if request.user|striptags == board_detail.writer|striptags %}
+    <div class="paad">
+      <button type="submit" class="submit2">수정</button>
+      <button type="submit" class="submit2 crb">삭제</button>
+    </div>
+  {% endif %}
+  <div class="descc">
       {{ board_detail.description }}
   </div>
+</div>
+<div class="tt">익명으로 댓글 작성하기</div>
+<div class="comment">
+  <input type="text" name="subject" class="input i7" placeholder="댓글을 입력해주세요"/>
+  <button type="submit" class="submit2">작성</button>
+</div>
 {% endblock %}
