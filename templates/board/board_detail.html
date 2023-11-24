@@ -6,8 +6,8 @@
   <div class="cat">작성자: {{ board_detail.writer }}</div>
   {% if request.user|striptags == board_detail.writer|striptags %}
     <div class="paad">
-      <button type="submit" class="submit2">수정</button>
-      <button type="submit" class="submit2 crb">삭제</button>
+      <a type="submit" class="submit2" href="/board/modify/{{board_detail.id}}">수정</a>
+      <a type="submit" class="submit2 crb" href="/board/delete/{{board_detail.id}}">삭제</a>
     </div>
   {% endif %}
   <div class="descc">

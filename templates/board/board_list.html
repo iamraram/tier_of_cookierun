@@ -7,12 +7,21 @@
   <div class="bottom">
     {% if board_list %}
         {% for i in board_list %}
+          {% if request.user|striptags == i.writer|striptags %}
+            <a href="/board/{{ i.id }}/" class="bottom_block bw3">
+              <div class="bottom_block_id">{{ i.id|stringformat:"03d" }}</div>
+              <div class="bottom_block_title">{{ i.subject }}</div>
+              <div class="bottom_block_view">조회수 {{ i.view }}</div>
+              <div class="bottom_block_date">{{ i.create_date|date:"Y-m-d H:i" }}</div>
+            </a>
+          {% else %}
             <a href="/board/{{ i.id }}/" class="bottom_block">
               <div class="bottom_block_id">{{ i.id|stringformat:"03d" }}</div>
               <div class="bottom_block_title">{{ i.subject }}</div>
               <div class="bottom_block_view">조회수 {{ i.view }}</div>
               <div class="bottom_block_date">{{ i.create_date|date:"Y-m-d H:i" }}</div>
             </a>
+          {% endif %}
         {% endfor %}
     {% endif %}
   </div>

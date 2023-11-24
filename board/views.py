@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Board
 from django.http import HttpResponse 
+from django.contrib import messages
 
 from .forms import PostForm
 
@@ -38,3 +39,25 @@ def board_write(request):
     form = PostForm()
     context = {'form': form}
     return render(request, 'board/board_write.html', context)
+
+
+def board_modify(request, question_id):
+    question = get_object_or_404(Board, pk=question_id)
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=question)
+        if form.is_valid():
+            question = form.save(commit=False)
+            question.modify_date = timezone.now()
+            question.save()
+            return redirect(f'/board/{question_id}/', question_id=question.id)
+    else:
+        form = PostForm(instance=question)
+        
+    context = {'form': form}
+    return render(request, 'board/board_write.html', context)
+  
+  
+def board_delete(request, question_id):
+    question = get_object_or_404(Board, pk=question_id)
+    question.delete()
+    return redirect('/board')

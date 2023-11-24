@@ -106,6 +106,10 @@ a {
   font-size: 18px;
 }
 
+.bw3 {
+  background-color: #dceacf;
+}
+
 .bottom_block_id {
   display: flex;
   text-align: left;
